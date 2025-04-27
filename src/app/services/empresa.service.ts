@@ -7,15 +7,22 @@ import { empresaExemplo } from '../datas/empresa-exemplo';
 })
 export class EmpresaService {
 
-  constructor() { }
+  private readonly storageKey = 'empresas';
 
-  private readonly empresa: IEmpresa[] = empresaExemplo;
+  constructor() {
+    if (!localStorage.getItem(this.storageKey)) {
+      localStorage.setItem(this.storageKey, JSON.stringify(empresaExemplo));
+    }
+  }
 
   getEmpresa(): IEmpresa[] {
-    return this.empresa;
+    const empresas = localStorage.getItem(this.storageKey);
+    return empresas ? JSON.parse(empresas) : [];
   }
 
   postEmpresa(novaEmpresa: IEmpresa) {
-    this.empresa.push(novaEmpresa);
+    const empresas = this.getEmpresa();
+    empresas.push(novaEmpresa);
+    localStorage.setItem(this.storageKey, JSON.stringify(empresas));
   }
 }

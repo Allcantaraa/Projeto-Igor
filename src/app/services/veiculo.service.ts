@@ -7,15 +7,22 @@ import { veiculoExemplo } from '../datas/veiculo-exemplo';
 })
 export class VeiculoService {
 
-  constructor() { }
+  private readonly storageKey = 'veiculos';
 
-  private readonly veiculo: IVeiculo[] = veiculoExemplo;
-
-  getVeiculo(): IVeiculo[] {
-    return this.veiculo;
+  constructor() {
+    if (!localStorage.getItem(this.storageKey)) {
+      localStorage.setItem(this.storageKey, JSON.stringify(veiculoExemplo));
+    }
   }
 
-  postMotorista(novoVeiculo: IVeiculo) {
-    this.veiculo.push(novoVeiculo);
+  getVeiculo(): IVeiculo[] {
+    const veiculos = localStorage.getItem(this.storageKey);
+    return veiculos ? JSON.parse(veiculos) : [];
+  }
+
+  postVeiculo(novoVeiculo: IVeiculo) {
+    const veiculos = this.getVeiculo();
+    veiculos.push(novoVeiculo);
+    localStorage.setItem(this.storageKey, JSON.stringify(veiculos));
   }
 }

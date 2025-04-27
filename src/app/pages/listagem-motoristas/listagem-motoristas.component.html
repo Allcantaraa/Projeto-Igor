@@ -2,13 +2,6 @@
   <button mat-raised-button (click)="addData()" class="demo-button">
     Adicionar motorista
   </button>
-  <button
-      mat-raised-button
-      [disabled]="!dataSource.length"
-      (click)="removeData()"
-      class="demo-button">
-    Remover motorista
-  </button>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
@@ -38,7 +31,19 @@
   
   <ng-container matColumnDef="ativo">
     <th mat-header-cell *matHeaderCellDef>Ativo</th>
-    <td mat-cell *matCellDef="let motorista">{{motorista.ativo}}</td>
+    <td mat-cell *matCellDef="let motorista">{{motorista.ativo | ativo}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef>Ações</th>
+    <td mat-cell *matCellDef="let motorista">
+      <button mat-icon-button color="warn" aria-label="Deletar" (click)="removeData(motorista)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Editar">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

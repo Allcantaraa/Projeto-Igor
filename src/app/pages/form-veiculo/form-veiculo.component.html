@@ -1,0 +1,48 @@
+<form [formGroup]="formVeiculo" (ngSubmit)="cadastrar()" class="form-container">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Placa</mat-label>
+    <input matInput formControlName="placa" placeholder="Digite a placa">
+    <mat-error *ngIf="formVeiculo.get('placa')?.hasError('required')">
+      Placa é obrigatória
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Modelo</mat-label>
+    <input matInput formControlName="modelo" placeholder="Digite o modelo">
+    <mat-error *ngIf="formVeiculo.get('modelo')?.hasError('required')">
+      Modelo é obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Capacidade</mat-label>
+    <input matInput type="number" formControlName="capacidade" placeholder="Digite a capacidade">
+    <mat-error *ngIf="formVeiculo.get('capacidade')?.hasError('required')">
+      Capacidade é obrigatória
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Ano de Fabricação</mat-label>
+    <input matInput type="number" formControlName="anoFabricacao" placeholder="Digite o ano de fabricação">
+    <mat-error *ngIf="formVeiculo.get('anoFabricacao')?.hasError('required')">
+      Ano de fabricação é obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="ativo">Ativo</mat-option>
+      <mat-option value="inativo">Inativo</mat-option>
+    </mat-select>
+    <mat-error *ngIf="formVeiculo.get('status')?.hasError('required')">
+      Status é obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="formVeiculo.invalid">
+    Cadastrar
+  </button>
+</form>

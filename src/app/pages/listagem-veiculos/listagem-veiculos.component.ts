@@ -3,11 +3,15 @@ import { IVeiculo } from '../../interfaces/veiculo.interface';
 import { VeiculoService } from '../../services/veiculo.service';
 import { MatTable } from '@angular/material/table';
 import { AngularMaterialModule } from '../../angular_material/angular-material/angular-material.module';
+import { Router } from '@angular/router';
+import { AtivoPipe } from "../../pipes/ativo.pipe";
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-listagem-veiculos',
   standalone: true,
-  imports: [AngularMaterialModule],
+  imports: [AngularMaterialModule, AtivoPipe],
   templateUrl: './listagem-veiculos.component.html',
   styleUrl: './listagem-veiculos.component.css'
 })
@@ -15,8 +19,10 @@ export class ListagemVeiculosComponent implements OnInit {
 
   veiculo: IVeiculo[] = [];
   veiculoService = inject(VeiculoService);
-
-  displayedColumns: string[] = ['placa', 'modelo', 'capacidade', 'anoFabricacao', 'ativo'];
+  router = inject(Router);
+  dialog = inject(MatDialog);
+  
+  displayedColumns: string[] = ['placa', 'modelo', 'capacidade', 'anoFabricacao', 'ativo', 'acoes'];
   dataSource: IVeiculo[] = [];
 
 
@@ -28,13 +34,23 @@ export class ListagemVeiculosComponent implements OnInit {
   }
 
   addData() {
-    const randomElementIndex = Math.floor(Math.random() * this.veiculo.length);
-    this.dataSource.push(this.veiculo[randomElementIndex]);
-    this.table.renderRows();
+    this.router.navigate(['/formVeiculos']);
   }
 
-  removeData() {
-    this.dataSource.pop();
-    this.table.renderRows();
+  removeData(veiculo: IVeiculo) {
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: { message: 'Tem certeza que deseja deletar este veiculo?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.dataSource.indexOf(veiculo);
+        if (index >= 0) {
+          this.dataSource.splice(index, 1);
+          this.table.renderRows();
+        }
+      }
+    });
   }
 }

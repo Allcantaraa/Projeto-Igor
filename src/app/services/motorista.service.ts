@@ -7,15 +7,24 @@ import { motoristaExemplo } from '../datas/motorista-exemplo';
 })
 export class MotoristaService {
 
-  constructor() { }
-
+  private readonly storageKey = 'motoristas';
   private readonly motorista: IMotorista[] = motoristaExemplo;
 
+  constructor() {
+    if (!localStorage.getItem(this.storageKey)) {
+      localStorage.setItem(this.storageKey, JSON.stringify(motoristaExemplo));
+    }
+  }
+
+
   getMotorista(): IMotorista[] {
-    return this.motorista;
+    const motoristas = localStorage.getItem(this.storageKey);
+    return motoristas ? JSON.parse(motoristas) : [];
   }
 
   postMotorista(novoMotorista: IMotorista) {
-    this.motorista.push(novoMotorista);
+    const motoristas = this.getMotorista();
+    motoristas.push(novoMotorista);
+    localStorage.setItem(this.storageKey, JSON.stringify(motoristas));
   }
 }
