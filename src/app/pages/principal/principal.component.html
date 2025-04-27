@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="filters-icon">
+    <mat-icon>filter_list</mat-icon>
+  </div>
+
+  <div class="card-wrapper">
+    <div *ngFor="let viagem of viagens" class="trip-card">
+      <div class="info-card">
+        <div class="info-header">
+          <h3>{{ viagem.origem }} → {{ viagem.destino }}</h3>
+          <button mat-stroked-button>Ver detalhes</button>
+        </div>
+        <div class="dates">
+          Data: {{ viagem.dataPartida | date : "dd/MM/yyyy HH:mm" }}
+        </div>
+      </div>
+
+      <div class="info-details">
+        <div class="location">
+          Motorista: {{ viagem.motorista.nome }} (CNH:
+          {{ viagem.motorista.cnh }})
+        </div>
+        <div class="divider"></div>
+        <div class="cargo-info">
+          <div>
+            Veículo: {{ viagem.veiculo.modelo }} ({{ viagem.veiculo.placa }})
+          </div>
+          <div>Empresa: {{ viagem.empresa.nome }}</div>
+        </div>
+        <div class="driver">
+          <span>Status: {{ viagem.status | statusViagem }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

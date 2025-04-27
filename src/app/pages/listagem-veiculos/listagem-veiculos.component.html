@@ -1,0 +1,47 @@
+
+<div class="demo-button-container">
+  <button mat-raised-button (click)="addData()" class="demo-button">
+    Adicionar veiculo
+  </button>
+  <button
+      mat-raised-button
+      [disabled]="!dataSource.length"
+      (click)="removeData()"
+      class="demo-button">
+    Remover veiculo
+  </button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="placa">
+    <th mat-header-cell *matHeaderCellDef>Placa</th>
+    <td mat-cell *matCellDef="let veiculo">{{veiculo.placa}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="modelo">
+    <th mat-header-cell *matHeaderCellDef>Modelo</th>
+    <td mat-cell *matCellDef="let veiculo">{{veiculo.modelo}}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="capacidade">
+    <th mat-header-cell *matHeaderCellDef>Capacidade</th>
+    <td mat-cell *matCellDef="let veiculo">{{veiculo.capacidade}}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="anoFabricacao">
+    <th mat-header-cell *matHeaderCellDef>Ano de Fabricação</th>
+    <td mat-cell *matCellDef="let veiculo">{{veiculo.anoFabricacao}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="ativo">
+    <th mat-header-cell *matHeaderCellDef>Ativo</th>
+    <td mat-cell *matCellDef="let veiculo">{{veiculo.ativo}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
