@@ -1,0 +1,64 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.login-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-actions button {
+  background-color: #3d1476;
+  color: white;
+  transition: background-color 300ms;
+}
+
+.login-actions button:hover {
+  background-color: #513679;
+}
+
+mat-card-title {
+  color: #3d1476;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 24px 16px;
+    border-radius: 12px;
+    margin: 0 16px;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  .login-actions {
+    justify-content: center;
+  }
+}
