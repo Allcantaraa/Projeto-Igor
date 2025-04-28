@@ -2,17 +2,19 @@
 .container {
   padding: 2rem;
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  align-items: center;
 }
-
-
 
 .filters-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -30px;
+  right: 50px;
   mat-icon {
     cursor: pointer;
     font-size: 28px;
@@ -23,13 +25,19 @@
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .status-card {
   flex: 1;
   min-width: 300px;
+  max-width: 350px;
   background: #fff;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
 }
 
 .status-card h2 {
@@ -47,9 +55,21 @@
 }
 
 .info-header {
+  background: #4b0082;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
+}
+
+.info-header button {
+  background: #633e97;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  width: 250px;
+  height: 49px;
+  font-size: 20px;
 }
 
 .dates {
@@ -59,11 +79,12 @@
 }
 
 .info-details {
-  background: #111;
+  background: #1a1a1a;
   padding: 1rem;
   color: #fff;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  flex-grow: 1; /* <-- Faz o conteúdo expandir igualmente */
 }
 
 .location {
@@ -98,4 +119,17 @@
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* --------- Responsividade --------- */
+@media (max-width: 768px) {
+  .status-card {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .card-wrapper {
+    justify-content: center;
+  }
 }

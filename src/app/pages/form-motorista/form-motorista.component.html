@@ -1,51 +1,72 @@
 <form [formGroup]="form" class="form-container">
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Nome</mat-label>
-    <input matInput formControlName="nome" placeholder="Digite o nome">
-    <mat-error *ngIf="form.get('nome')?.hasError('required')">
-      Nome é obrigatório
-    </mat-error>
-  </mat-form-field>
+  <h2 class="form-title">Cadastrar Motorista</h2>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>CNH</mat-label>
-    <input matInput formControlName="cnh" placeholder="Digite a CNH">
-    <mat-error *ngIf="form.get('cnh')?.hasError('required')">
-      CNH é obrigatória
-    </mat-error>
-  </mat-form-field>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Digite o nome" />
+      <mat-error *ngIf="form.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Telefone</mat-label>
-    <input matInput formControlName="telefone" placeholder="Digite o telefone">
-    <mat-error *ngIf="form.get('telefone')?.hasError('required')">
-      Telefone é obrigatório
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>CNH</mat-label>
+      <input matInput formControlName="cnh" placeholder="Digite a CNH" />
+      <mat-error *ngIf="form.get('cnh')?.hasError('required')">
+        CNH é obrigatória
+      </mat-error>
+    </mat-form-field>
+  </div>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" placeholder="Digite o email">
-    <mat-error *ngIf="form.get('email')?.hasError('required')">
-      Email é obrigatório
-    </mat-error>
-    <mat-error *ngIf="form.get('email')?.hasError('email')">
-      Email inválido
-    </mat-error>
-  </mat-form-field>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Telefone</mat-label>
+      <input
+        matInput
+        formControlName="telefone"
+        placeholder="Digite o telefone"
+      />
+      <mat-error *ngIf="form.get('telefone')?.hasError('required')">
+        Telefone é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Status</mat-label>
-    <mat-select formControlName="status">
-      <mat-option value="ativo">Ativo</mat-option>
-      <mat-option value="inativo">Inativo</mat-option>
-    </mat-select>
-    <mat-error *ngIf="form.get('status')?.hasError('required')">
-      Status é obrigatório
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Digite o email" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email é obrigatório
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+  </div>
 
-  <button mat-raised-button type="button" color="primary" [disabled]="form.invalid" (click)="cadastrar()">
-    Cadastrar
-  </button>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="ativo">Ativo</mat-option>
+        <mat-option value="inativo">Inativo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('status')?.hasError('required')">
+        Status é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      class="submit-button"
+      [disabled]="form.invalid"
+      (click)="cadastrar()"
+    >
+      Cadastrar
+    </button>
+  </div>
 </form>

@@ -1,13 +1,23 @@
-<h2 mat-dialog-title>Detalhes da Viagem</h2>
-    <mat-dialog-content class="dialog-content">
-      <p><strong>Origem:</strong> {{ data.origem }}</p>
-      <p><strong>Destino:</strong> {{ data.destino }}</p>
-      <p><strong>Data de Partida:</strong> {{ data.dataPartida | date : "dd/MM/yyyy HH:mm" }}</p>
-      <p><strong>Motorista:</strong> {{ data.motorista.nome }} (CNH: {{ data.motorista.cnh }})</p>
-      <p><strong>Veículo:</strong> {{ data.veiculo.modelo }} ({{ data.veiculo.placa }})</p>
-      <p><strong>Empresa:</strong> {{ data.empresa.nome }}</p>
-      <p><strong>Status:</strong> {{ data.status | statusViagem }}</p>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button (click)="fechar()">Fechar</button>
-    </mat-dialog-actions>
+<h2 mat-dialog-title class="dialog-title">Detalhes da Viagem</h2>
+<mat-dialog-content class="dialog-content">
+  <p><strong>Origem:</strong> {{ data.origem }}</p>
+  <p><strong>Destino:</strong> {{ data.destino }}</p>
+  <p>
+    <strong>Data de Partida:</strong>
+    {{ data.dataPartida | date : "dd/MM/yyyy HH:mm" }}
+  </p>
+  <p>
+    <strong>Motorista:</strong> {{ data.motorista.nome }} (CNH:
+    {{ data.motorista.cnh }})
+  </p>
+  <p>
+    <strong>Veículo:</strong> {{ data.veiculo.modelo }} ({{
+      data.veiculo.placa
+    }})
+  </p>
+  <p><strong>Empresa:</strong> {{ data.empresa.nome }}</p>
+  <p><strong>Status:</strong> {{ data.status | statusViagem }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="fechar()" class="dialog-button">Fechar</button>
+</mat-dialog-actions>

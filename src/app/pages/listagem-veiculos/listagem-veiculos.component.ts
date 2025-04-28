@@ -4,7 +4,7 @@ import { VeiculoService } from '../../services/veiculo.service';
 import { MatTable } from '@angular/material/table';
 import { AngularMaterialModule } from '../../angular_material/angular-material/angular-material.module';
 import { Router } from '@angular/router';
-import { AtivoPipe } from "../../pipes/ativo.pipe";
+import { AtivoPipe } from '../../pipes/ativo.pipe';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
@@ -13,18 +13,23 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   standalone: true,
   imports: [AngularMaterialModule, AtivoPipe],
   templateUrl: './listagem-veiculos.component.html',
-  styleUrl: './listagem-veiculos.component.css'
+  styleUrl: './listagem-veiculos.component.css',
 })
 export class ListagemVeiculosComponent implements OnInit {
-
   veiculo: IVeiculo[] = [];
   veiculoService = inject(VeiculoService);
   router = inject(Router);
   dialog = inject(MatDialog);
-  
-  displayedColumns: string[] = ['placa', 'modelo', 'capacidade', 'anoFabricacao', 'ativo', 'acoes'];
-  dataSource: IVeiculo[] = [];
 
+  displayedColumns: string[] = [
+    'placa',
+    'modelo',
+    'capacidade',
+    'anoFabricacao',
+    'ativo',
+    'acoes',
+  ];
+  dataSource: IVeiculo[] = [];
 
   @ViewChild(MatTable) table!: MatTable<IVeiculo[]>;
 
@@ -38,12 +43,15 @@ export class ListagemVeiculosComponent implements OnInit {
   }
 
   removeData(veiculo: IVeiculo) {
-    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(ConfirmDialogComponent, {
-      width: '300px',
-      data: { message: 'Tem certeza que deseja deletar este veiculo?' }
-    });
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
+      ConfirmDialogComponent,
+      {
+        width: '300px',
+        data: { message: 'Tem certeza que deseja deletar este veiculo?' },
+      }
+    );
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         const index = this.dataSource.indexOf(veiculo);
         if (index >= 0) {

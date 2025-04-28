@@ -1,3 +1,36 @@
+.dialog-title {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #3d1476; /* Cor para o título */
+  margin-bottom: 16px;
+}
+
 .dialog-content p {
-  margin: 8px 0;
+  margin: 12px 0;
+  font-size: 1.1em;
+  color: #333; /* Cor do texto */
+}
+
+.dialog-content strong {
+  color: #3d1476; /* Cor do texto em negrito */
+}
+
+.dialog-button {
+  background-color: #633e97;
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.dialog-button:hover {
+  background-color: #513679;
+}
+
+mat-dialog-content {
+  padding: 20px;
+  background-color: #f9f9f9; /* Fundo suave */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }

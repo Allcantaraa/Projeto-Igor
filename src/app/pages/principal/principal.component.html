@@ -8,7 +8,9 @@
       <div class="info-card">
         <div class="info-header">
           <h3>{{ viagem.origem }} → {{ viagem.destino }}</h3>
-          <button mat-stroked-button (click)="abrirDetalhes(viagem)">Ver detalhes</button>
+          <button mat-stroked-button (click)="abrirDetalhes(viagem)">
+            Ver detalhes
+          </button>
         </div>
         <div class="dates">
           Data: {{ viagem.dataPartida | date : "dd/MM/yyyy HH:mm" }}

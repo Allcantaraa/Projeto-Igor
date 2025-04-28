@@ -1,0 +1,80 @@
+.demo-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.demo-button {
+  background-color: #3d1476;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-right: 20px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.demo-button:hover {
+  background-color: #513679;
+}
+
+.demo-table {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mat-header-cell {
+  background-color: #f5f5f5;
+  color: #3f51b5;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 12px;
+}
+
+.mat-cell {
+  padding: 12px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.mat-row:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.action-button {
+  background-color: #3d1476;
+  color: #fafafa;
+  padding: 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.action-button:hover {
+  background-color: #513679;
+}
+
+button.mat-icon-button {
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.mat-icon {
+  font-size: 20px;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+mat-header-row {
+  border-bottom: 2px solid #e0e0e0;
+}
+
+mat-row {
+  border-bottom: 1px solid #e0e0e0;
+}

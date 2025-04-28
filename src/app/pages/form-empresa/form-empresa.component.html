@@ -1,59 +1,87 @@
 <form [formGroup]="formEmpresa" (ngSubmit)="cadastrar()" class="form-container">
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Nome da Empresa</mat-label>
-    <input matInput formControlName="nome" placeholder="Digite o nome da empresa">
-    <mat-error *ngIf="formEmpresa.get('nome')?.hasError('required')">
-      Nome é obrigatório
-    </mat-error>
-  </mat-form-field>
+  <h2 class="form-title">Cadastrar Empresa</h2>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>CNPJ</mat-label>
-    <input matInput formControlName="cnpj" placeholder="Digite o CNPJ">
-    <mat-error *ngIf="formEmpresa.get('cnpj')?.hasError('required')">
-      CNPJ é obrigatório
-    </mat-error>
-  </mat-form-field>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nome da Empresa</mat-label>
+      <input
+        matInput
+        formControlName="nome"
+        placeholder="Digite o nome da empresa"
+      />
+      <mat-error *ngIf="formEmpresa.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Telefone</mat-label>
-    <input matInput formControlName="telefone" placeholder="Digite o telefone">
-    <mat-error *ngIf="formEmpresa.get('telefone')?.hasError('required')">
-      Telefone é obrigatório
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>CNPJ</mat-label>
+      <input matInput formControlName="cnpj" placeholder="Digite o CNPJ" />
+      <mat-error *ngIf="formEmpresa.get('cnpj')?.hasError('required')">
+        CNPJ é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" placeholder="Digite o email">
-    <mat-error *ngIf="formEmpresa.get('email')?.hasError('required')">
-      Email é obrigatório
-    </mat-error>
-    <mat-error *ngIf="formEmpresa.get('email')?.hasError('email')">
-      Email inválido
-    </mat-error>
-  </mat-form-field>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Telefone</mat-label>
+      <input
+        matInput
+        formControlName="telefone"
+        placeholder="Digite o telefone"
+      />
+      <mat-error *ngIf="formEmpresa.get('telefone')?.hasError('required')">
+        Telefone é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Endereço</mat-label>
-    <input matInput formControlName="endereco" placeholder="Digite o endereço">
-    <mat-error *ngIf="formEmpresa.get('endereco')?.hasError('required')">
-      Endereço é obrigatório
-    </mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Digite o email" />
+      <mat-error *ngIf="formEmpresa.get('email')?.hasError('required')">
+        Email é obrigatório
+      </mat-error>
+      <mat-error *ngIf="formEmpresa.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+  </div>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Status</mat-label>
-    <mat-select formControlName="status">
-      <mat-option value="ativo">Ativo</mat-option>
-      <mat-option value="inativo">Inativo</mat-option>
-    </mat-select>
-    <mat-error *ngIf="formEmpresa.get('status')?.hasError('required')">
-      Status é obrigatório
-    </mat-error>
-  </mat-form-field>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Endereço</mat-label>
+      <input
+        matInput
+        formControlName="endereco"
+        placeholder="Digite o endereço"
+      />
+      <mat-error *ngIf="formEmpresa.get('endereco')?.hasError('required')">
+        Endereço é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="formEmpresa.invalid">
-    Cadastrar
-  </button>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="ativo">Ativo</mat-option>
+        <mat-option value="inativo">Inativo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formEmpresa.get('status')?.hasError('required')">
+        Status é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="formEmpresa.invalid"
+      class="submit-button"
+    >
+      Cadastrar
+    </button>
+  </div>
 </form>

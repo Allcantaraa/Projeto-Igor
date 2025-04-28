@@ -1,49 +1,58 @@
-
 <div class="demo-button-container">
   <button mat-raised-button (click)="addData()" class="demo-button">
-    Adicionar veiculo
+    Adicionar Veículo
   </button>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
   <ng-container matColumnDef="placa">
     <th mat-header-cell *matHeaderCellDef>Placa</th>
-    <td mat-cell *matCellDef="let veiculo">{{veiculo.placa}}</td>
+    <td mat-cell *matCellDef="let veiculo">{{ veiculo.placa }}</td>
   </ng-container>
 
   <ng-container matColumnDef="modelo">
     <th mat-header-cell *matHeaderCellDef>Modelo</th>
-    <td mat-cell *matCellDef="let veiculo">{{veiculo.modelo}}</td>
+    <td mat-cell *matCellDef="let veiculo">{{ veiculo.modelo }}</td>
   </ng-container>
 
   <ng-container matColumnDef="capacidade">
     <th mat-header-cell *matHeaderCellDef>Capacidade</th>
-    <td mat-cell *matCellDef="let veiculo">{{veiculo.capacidade}}</td>
+    <td mat-cell *matCellDef="let veiculo">{{ veiculo.capacidade }}</td>
   </ng-container>
 
   <ng-container matColumnDef="anoFabricacao">
     <th mat-header-cell *matHeaderCellDef>Ano de Fabricação</th>
-    <td mat-cell *matCellDef="let veiculo">{{veiculo.anoFabricacao}}</td>
+    <td mat-cell *matCellDef="let veiculo">{{ veiculo.anoFabricacao }}</td>
   </ng-container>
-  
+
   <ng-container matColumnDef="ativo">
     <th mat-header-cell *matHeaderCellDef>Ativo</th>
-    <td mat-cell *matCellDef="let veiculo">{{veiculo.ativo | ativo}}</td>
+    <td mat-cell *matCellDef="let veiculo">{{ veiculo.ativo | ativo }}</td>
   </ng-container>
 
   <ng-container matColumnDef="acoes">
     <th mat-header-cell *matHeaderCellDef>Ações</th>
     <td mat-cell *matCellDef="let veiculo">
-      <button mat-icon-button color="warn" aria-label="Deletar" (click)="removeData(veiculo)">
+      <button
+        mat-icon-button
+        color="warn"
+        aria-label="Deletar"
+        (click)="removeData(veiculo)"
+        class="action-button"
+      >
         <mat-icon>delete</mat-icon>
       </button>
-      <button mat-icon-button color="warn" aria-label="Editar">
+      <button
+        mat-icon-button
+        color="accent"
+        aria-label="Editar"
+        class="action-button"
+      >
         <mat-icon>edit</mat-icon>
       </button>
     </td>
   </ng-container>
-  
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

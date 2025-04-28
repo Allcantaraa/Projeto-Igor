@@ -1,6 +1,145 @@
+/* Navbar Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between; /* Logo à esquerda e links à direita */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 0 16px;
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo img {
+  height: 60px; /* Ajuste o tamanho da logo */
+  cursor: pointer;
+}
+
+/* Header Links (já estava bom, apenas removi o background duplicado) */
 .header-links {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 1rem;
+  gap: 3px;
+}
+
+.header-links button {
+  background-color: #3d1476;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+  height: 60px;
+  font-size: 16px;
+  text-transform: none;
+  border: none;
+  transition: background-color 0.3s ease;
+  border-radius: 0;
+}
+
+/* Cantos arredondados nos botões */
+.header-links button:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.header-links button:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.header-links button:hover {
+  background-color: #4b2375;
+}
+
+/* Dialogs */
+mat-dialog-content.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+mat-dialog-actions {
+  padding: 8px 0 0;
+}
+
+mat-dialog-actions button {
+  margin-left: 8px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+button[mat-raised-button] {
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3d1476;
+  border-radius: 8px;
+  text-transform: none;
+}
+
+button[mat-raised-button]:hover {
+  background-color: #4b2375;
+}
+
+/* Tabelas */
+.demo-button-container {
+  margin-bottom: 16px;
+}
+
+.demo-button {
+  background-color: #3d1476;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.demo-button:hover {
+  background-color: #4b2375;
+}
+
+.demo-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mat-header-row {
+  background-color: #3d1476;
+  color: white;
+  font-weight: bold;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.mat-row:hover {
+  background-color: #e3f2fd;
+}
+
+button[mat-icon-button] {
+  margin: 0 4px;
+}
+
+button[mat-icon-button] mat-icon {
+  color: #d32f2f;
+}
+
+mat-form-field {
+  background: #fafafa;
+  border-radius: 4px;
+}
+
+mat-select {
+  background: white;
 }
