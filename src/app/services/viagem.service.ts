@@ -7,15 +7,22 @@ import { viagensCadastradas } from '../datas/viagens-exemplo';
 })
 export class ViagemService {
 
-  constructor() { }
+  private readonly storageKey = 'viagens';
 
-  private viagens: IViagem[] = viagensCadastradas;
+  constructor() {
+    if (!localStorage.getItem(this.storageKey)) {
+      localStorage.setItem(this.storageKey, JSON.stringify(viagensCadastradas));
+    }
+  }
 
   getViagens(): IViagem[] {
-    return this.viagens;
+    const viagens = localStorage.getItem(this.storageKey);
+    return viagens ? JSON.parse(viagens) : [];
   }
 
   postViagem(novaViagem: IViagem) {
-    this.viagens.push(novaViagem);
+    const viagens = this.getViagens();
+    viagens.push(novaViagem);
+    localStorage.setItem(this.storageKey, JSON.stringify(viagens));
   }
 }

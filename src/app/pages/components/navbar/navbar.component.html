@@ -1,4 +1,4 @@
-<div class="navbar-container">
+<div class="navbar-container" *ngIf="mostrarNav">
   <div class="logo">
     <img
       src="../../../../../../netflixLogo.jpg"
@@ -9,6 +9,7 @@
   <div class="header-links">
     <button mat-button routerLink="/listaVeiculos">Veiculos</button>
     <button mat-button routerLink="/listaEmpresas">Empresas</button>
-    <button mat-button routerLink="/listaMotoristas">Motorista</button>
+    <button mat-button routerLink="/listaMotoristas">Motoristas</button>
+    <button mat-button routerLink="/listaViagens">Viagens</button>
   </div>
 </div>

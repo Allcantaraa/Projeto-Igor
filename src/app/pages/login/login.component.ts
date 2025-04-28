@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,10 @@ export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private readonly router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -33,5 +36,9 @@ export class LoginComponent {
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
+  }
+
+  login() {
+    this.router.navigate(['principal']);
   }
 }

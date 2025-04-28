@@ -1,0 +1,90 @@
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 3%;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #3d1476;
+  margin-bottom: 50px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  width: 48%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-label {
+  color: #3f51b5;
+}
+
+input.mat-input-element {
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+input.mat-input-element:focus {
+  border-color: #3f51b5;
+}
+
+button.mat-raised-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.mat-raised-button[disabled] {
+  background-color: #cccccc;
+  color: #777;
+}
+
+button.mat-raised-button:hover:not([disabled]) {
+  background-color: #303f9f;
+  transform: translateY(-2px);
+}
+
+.mat-error {
+  font-size: 0.875rem;
+  color: #f44336;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-button {
+  background-color: #3d1476;
+  width: 200px;
+  height: 50px;
+  color: white;
+}
+
+.mat-select {
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 10px;
+}

@@ -1,0 +1,111 @@
+<form [formGroup]="formViagem" class="form-container">
+  <h2 class="form-title">Cadastrar Viagem</h2>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Origem</mat-label>
+      <input matInput formControlName="origem" placeholder="Digite a origem" />
+      <mat-error *ngIf="formViagem.get('origem')?.hasError('required')">
+        Origem é obrigatória
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Destino</mat-label>
+      <input matInput formControlName="destino" placeholder="Digite o destino" />
+      <mat-error *ngIf="formViagem.get('destino')?.hasError('required')">
+        Destino é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Data de Partida</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataPartida" placeholder="Selecione a data" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="formViagem.get('dataPartida')?.hasError('required')">
+        Data de partida é obrigatória
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Preço</mat-label>
+      <input matInput type="number" formControlName="preco" placeholder="Digite o preço" />
+      <mat-error *ngIf="formViagem.get('preco')?.hasError('required')">
+        Preço é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="EM_ANDAMENTO">Em Andamento</mat-option>
+        <mat-option value="FINALIZADA">Finalizada</mat-option>
+        <mat-option value="CANCELADA">Cancelada</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formViagem.get('status')?.hasError('required')">
+        Status é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Motorista</mat-label>
+        <mat-select formControlName="motorista">
+          <mat-option value="" disabled>Selecione um motorista</mat-option>
+          <mat-option *ngFor="let mot of motorista" [value]="mot">
+            {{ mot.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formViagem.get('motorista')?.hasError('required')">
+          O motorista é obrigatório.
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Veiculo</mat-label>
+        <mat-select formControlName="veiculo">
+          <mat-option value="" disabled>Selecione um veiculo</mat-option>
+          <mat-option *ngFor="let veic of veiculo" [value]="veic">
+            {{ veic.modelo }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formViagem.get('veiculo')?.hasError('required')">
+          O veiculo é obrigatório.
+        </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Empresa</mat-label>
+        <mat-select formControlName="empresa">
+          <mat-option value="" disabled>Selecione uma empresa</mat-option>
+          <mat-option *ngFor="let emp of empresa" [value]="emp">
+            {{ emp.nome }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formViagem.get('empresa')?.hasError('required')">
+          A empresa é obrigatória.
+        </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="button-container">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="formViagem.invalid"
+      class="submit-button"
+      (click)="cadastrar()"
+    >
+      Cadastrar
+    </button>
+  </div>
+</form>

@@ -7,6 +7,8 @@ import { ListagemMotoristasComponent } from './pages/listagem-motoristas/listage
 import { FormMotoristaComponent } from './pages/form-motorista/form-motorista.component';
 import { FormVeiculoComponent } from './pages/form-veiculo/form-veiculo.component';
 import { FormEmpresaComponent } from './pages/form-empresa/form-empresa.component';
+import { ListagemViagensComponent } from './pages/listagem-viagens/listagem-viagens.component';
+import { FormViagemComponent } from './pages/form-viagem/form-viagem.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,7 +16,10 @@ export const routes: Routes = [
   { path: 'listaVeiculos', component: ListagemVeiculosComponent},
   { path: 'listaEmpresas', component: ListagemEmpresasComponent},
   { path: 'listaMotoristas', component: ListagemMotoristasComponent },
-  {path: 'formMotoristas', component: FormMotoristaComponent},
-  {path: 'formVeiculos', component: FormVeiculoComponent},
-  {path: 'formEmpresas', component: FormEmpresaComponent},
+  { path: 'listaViagens', component: ListagemViagensComponent },
+
+  { path: 'formMotoristas', component: FormMotoristaComponent },
+  { path: 'formVeiculos', component: FormVeiculoComponent },
+  { path: 'formEmpresas', component: FormEmpresaComponent },
+  { path: 'formViagens', component: FormViagemComponent },
 ];

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatInput, MatInputModule} from '@angular/material/input';
+import { MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -13,7 +13,8 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -32,7 +33,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule, 
+    MatDatepickerModule,
   ],
   exports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
   ]
 })
 export class AngularMaterialModule { }
