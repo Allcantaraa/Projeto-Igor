@@ -10,6 +10,7 @@ import { VeiculoService } from '../../services/veiculo.service';
 import { IMotorista } from '../../interfaces/motorista.interface';
 import { IEmpresa } from '../../interfaces/empresa.interface';
 import { IVeiculo } from '../../interfaces/veiculo.interface';
+import { ViagemStatus } from '../../enums/viagem-status.enum';
 
 @Component({
   selector: 'app-form-viagem',
@@ -25,6 +26,11 @@ export class FormViagemComponent {
   motorista: IMotorista[] = [];
   empresa: IEmpresa[] = [];
   veiculo: IVeiculo[] = [];
+
+  statusOptions = [
+    { label: 'Em Andamento', value: ViagemStatus.EM_ANDAMENTO },
+    { label: 'Concluida', value: ViagemStatus.CONCLUIDA },
+  ]
 
   constructor(
     private readonly fb: FormBuilder,

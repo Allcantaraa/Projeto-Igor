@@ -43,9 +43,7 @@
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Status</mat-label>
       <mat-select formControlName="status">
-        <mat-option value="EM_ANDAMENTO">Em Andamento</mat-option>
-        <mat-option value="FINALIZADA">Finalizada</mat-option>
-        <mat-option value="CANCELADA">Cancelada</mat-option>
+        <mat-option *ngFor="let status of statusOptions" [value]="status.value">{{status.label}}</mat-option>
       </mat-select>
       <mat-error *ngIf="formViagem.get('status')?.hasError('required')">
         Status é obrigatório

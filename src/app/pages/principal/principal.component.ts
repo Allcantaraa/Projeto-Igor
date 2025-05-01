@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DetalhesViagemComponent } from '../components/detalhes-viagem/detalhes-viagem.component';
+import { ViagemStatus } from '../../enums/viagem-status.enum';
 
 
 
@@ -30,7 +31,7 @@ export class PrincipalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.viagens = this.viagemService.getViagens();
+    this.viagens = this.viagemService.getViagens().filter(viagem => viagem.status === ViagemStatus.EM_ANDAMENTO);
   }
 
   abrirDetalhes(viagem: IViagem) {
