@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 import { AtivoPipe } from "../../pipes/ativo.pipe";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { CnpjPipe } from "../../pipes/cnpj.pipe";
+import { TelefonePipe } from "../../pipes/telefone.pipe";
 
 @Component({
   selector: 'app-listagem-empresas',
   standalone: true,
-  imports: [AngularMaterialModule, AtivoPipe],
+  imports: [AngularMaterialModule, AtivoPipe, CnpjPipe, TelefonePipe],
   templateUrl: './listagem-empresas.component.html',
   styleUrl: './listagem-empresas.component.css'
 })

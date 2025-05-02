@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import { AtivoPipe } from '../../pipes/ativo.pipe';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { PlacaPipe } from "../../pipes/placa.pipe";
 
 @Component({
   selector: 'app-listagem-veiculos',
   standalone: true,
-  imports: [AngularMaterialModule, AtivoPipe],
+  imports: [AngularMaterialModule, AtivoPipe, PlacaPipe],
   templateUrl: './listagem-veiculos.component.html',
   styleUrl: './listagem-veiculos.component.css',
 })

@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 import { AtivoPipe } from "../../pipes/ativo.pipe";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { CnhPipe } from "../../pipes/cnh.pipe";
+import { TelefonePipe } from "../../pipes/telefone.pipe";
 
 @Component({
   selector: 'app-listagem-motoristas',
   standalone: true,
-  imports: [AngularMaterialModule, AtivoPipe],
+  imports: [AngularMaterialModule, AtivoPipe, CnhPipe, TelefonePipe],
   templateUrl: './listagem-motoristas.component.html',
   styleUrl: './listagem-motoristas.component.css'
 })

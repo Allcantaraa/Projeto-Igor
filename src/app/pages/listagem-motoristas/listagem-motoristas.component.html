@@ -14,13 +14,13 @@
   <!-- Name Column -->
   <ng-container matColumnDef="cnh">
     <th mat-header-cell *matHeaderCellDef>CNH</th>
-    <td mat-cell *matCellDef="let motorista">{{ motorista.cnh }}</td>
+    <td mat-cell *matCellDef="let motorista">{{ motorista.cnh | cnh }}</td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="telefone">
     <th mat-header-cell *matHeaderCellDef>Telefone</th>
-    <td mat-cell *matCellDef="let motorista">{{ motorista.telefone }}</td>
+    <td mat-cell *matCellDef="let motorista">{{ motorista.telefone | telefone }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
