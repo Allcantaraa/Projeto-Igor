@@ -4,11 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MotoristaService } from '../../services/motorista.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-form-motorista',
   standalone: true,
-  imports: [AngularMaterialModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    AngularMaterialModule,
+    CommonModule,
+    ReactiveFormsModule,
+    NgxMaskDirective
+  ],
   templateUrl: './form-motorista.component.html',
   styleUrl: './form-motorista.component.css'
 })

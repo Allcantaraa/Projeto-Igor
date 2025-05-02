@@ -4,7 +4,11 @@
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Placa</mat-label>
-      <input matInput formControlName="placa" placeholder="Digite a placa" />
+      <input 
+      matInput 
+      formControlName="placa" 
+      placeholder="ABC-1D34"
+      mask="SSS-0S00" />
       <mat-error *ngIf="formVeiculo.get('placa')?.hasError('required')">
         Placa é obrigatória
       </mat-error>

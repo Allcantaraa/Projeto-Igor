@@ -4,11 +4,17 @@ import { AngularMaterialModule } from '../../angular_material/angular-material/a
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { VeiculoService } from '../../services/veiculo.service';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-form-veiculo',
   standalone: true,
-  imports: [AngularMaterialModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    AngularMaterialModule,
+    CommonModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+  ],
   templateUrl: './form-veiculo.component.html',
   styleUrl: './form-veiculo.component.css'
 })

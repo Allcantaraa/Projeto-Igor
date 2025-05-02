@@ -11,11 +11,17 @@ import { IMotorista } from '../../interfaces/motorista.interface';
 import { IEmpresa } from '../../interfaces/empresa.interface';
 import { IVeiculo } from '../../interfaces/veiculo.interface';
 import { ViagemStatus } from '../../enums/viagem-status.enum';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-form-viagem',
   standalone: true,
-  imports: [CommonModule, AngularMaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+  ],
   templateUrl: './form-viagem.component.html',
   styleUrl: './form-viagem.component.css'
 })
@@ -45,7 +51,7 @@ export class FormViagemComponent {
       origem: ['', Validators.required],
       destino: ['', Validators.required],
       dataPartida: ['', Validators.required],
-      preco: ['', Validators.required],
+      preco: [null, Validators.required],
       status: ['', Validators.required],
       motorista: ['', Validators.required],
       veiculo: ['', Validators.required],
@@ -59,6 +65,7 @@ export class FormViagemComponent {
 
   cadastrar() {
     if (this.formViagem.valid) {
+
 
       const viagem = {
         origem: this.formViagem.value.origem,
@@ -89,5 +96,6 @@ export class FormViagemComponent {
   carregarVeiculo() {
     this.veiculo = this.veiculoService.getVeiculo();
   }
+
 
 }

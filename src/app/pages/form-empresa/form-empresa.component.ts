@@ -4,11 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmpresaService } from '../../services/empresa.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-form-empresa',
   standalone: true,
-  imports: [AngularMaterialModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    AngularMaterialModule,
+    CommonModule,
+    ReactiveFormsModule,
+    NgxMaskDirective
+  ],
   templateUrl: './form-empresa.component.html',
   styleUrl: './form-empresa.component.css'
 })
