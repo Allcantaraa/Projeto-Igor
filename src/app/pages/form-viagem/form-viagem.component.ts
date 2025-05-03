@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ViagemService } from '../../services/viagem.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AngularMaterialModule } from '../../angular_material/angular-material/angular-material.module';
 import { MotoristaService } from '../../services/motorista.service';
@@ -12,6 +12,7 @@ import { IEmpresa } from '../../interfaces/empresa.interface';
 import { IVeiculo } from '../../interfaces/veiculo.interface';
 import { ViagemStatus } from '../../enums/viagem-status.enum';
 import { NgxMaskDirective } from 'ngx-mask';
+import { IViagem } from '../../interfaces/viagem.interface';
 
 @Component({
   selector: 'app-form-viagem',
@@ -32,15 +33,21 @@ export class FormViagemComponent {
   motorista: IMotorista[] = [];
   empresa: IEmpresa[] = [];
   veiculo: IVeiculo[] = [];
+  editando: boolean = false;
 
   statusOptions = [
     { label: 'Em Andamento', value: ViagemStatus.EM_ANDAMENTO },
     { label: 'Concluida', value: ViagemStatus.CONCLUIDA },
   ]
 
+  compareMotoristas = (a: IMotorista, b: IMotorista) => a?.id === b?.id;
+  compareEmpresas = (a: IEmpresa, b: IEmpresa) => a?.id === b?.id;
+  compareVeiculos = (a: IVeiculo, b: IVeiculo) => a?.id === b?.id;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private readonly motoristaService: MotoristaService,
     private readonly empresaService: EmpresaService,
     private readonly veiculoService: VeiculoService,
@@ -61,6 +68,26 @@ export class FormViagemComponent {
     this.carregarMotorista();
     this.carregarEmpresa();
     this.carregarVeiculo();
+
+    const viagemParam = this.route.snapshot.paramMap.get('viagem');
+
+    if (viagemParam) {
+      const viagem: IViagem = JSON.parse(viagemParam);
+      this.editando = true;
+      setTimeout(() => {
+        this.formViagem.patchValue({
+          origem: viagem.origem,
+          destino: viagem.destino,
+          dataPartida: viagem.dataPartida,
+          preco: viagem.preco,
+          status: viagem.status,
+          motorista: viagem.motorista,
+          veiculo: viagem.veiculo,
+          empresa: viagem.empresa,
+        });
+      }, 100);
+
+    }
   }
 
   cadastrar() {
@@ -78,8 +105,15 @@ export class FormViagemComponent {
         empresa: this.formViagem.value.empresa,
       };
 
-      this.viagemService.postViagem(viagem);
-      this.router.navigate(['/listaViagens']);
+      if (this.editando) {
+        this.viagemService.putViagem(viagem);
+        this.router.navigate(['/listaViagens']);
+      } else {
+        this.viagemService.postViagem(viagem);
+        this.router.navigate(['/listaViagens']);
+      }
+
+
     } else {
       this.formViagem.markAllAsTouched();
     }

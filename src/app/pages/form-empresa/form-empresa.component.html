@@ -1,5 +1,5 @@
 <form [formGroup]="formEmpresa" (ngSubmit)="cadastrar()" class="form-container">
-  <h2 class="form-title">Cadastrar Empresa</h2>
+  <h2 class="form-title">{{ formEmpresa.value.nome ? 'Editar Empresa' : 'Cadastrar Empresa'}}</h2>
 
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
@@ -87,7 +87,7 @@
       [disabled]="formEmpresa.invalid"
       class="submit-button"
     >
-      Cadastrar
+      {{formEmpresa.value.nome ? 'Salvar' : 'Cadastrar'}} 
     </button>
   </div>
 </form>

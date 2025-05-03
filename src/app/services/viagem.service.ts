@@ -25,4 +25,14 @@ export class ViagemService {
     viagens.push(novaViagem);
     localStorage.setItem(this.storageKey, JSON.stringify(viagens));
   }
+
+  putViagem(viagemEditada: IViagem) {
+      const viagens = this.getViagens();
+      const index = viagens.findIndex(v => v.preco === viagemEditada.preco);
+  
+      if (index !== -1) {
+        viagens[index] = viagemEditada;
+        localStorage.setItem(this.storageKey, JSON.stringify(viagens));
+      }
+    }
 }

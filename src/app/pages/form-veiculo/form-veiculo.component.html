@@ -1,14 +1,17 @@
 <form [formGroup]="formVeiculo" (ngSubmit)="cadastrar()" class="form-container">
-  <h2 class="form-title">Cadastrar Veículo</h2>
+  <h2 class="form-title">
+    {{ formVeiculo.value.placa ? 'Editar Veículo' : 'Cadastrar Veículo' }}
+  </h2>
 
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Placa</mat-label>
-      <input 
-      matInput 
-      formControlName="placa" 
-      placeholder="ABC-1D34"
-      mask="SSS-0S00" />
+      <input
+        matInput
+        formControlName="placa"
+        placeholder="ABC-1D34"
+        mask="SSS-0S00"
+      />
       <mat-error *ngIf="formVeiculo.get('placa')?.hasError('required')">
         Placa é obrigatória
       </mat-error>
@@ -72,7 +75,7 @@
       [disabled]="formVeiculo.invalid"
       class="submit-button"
     >
-      Cadastrar
+      {{ formVeiculo.value.placa ? "Salvar" : "Cadastrar" }}
     </button>
   </div>
 </form>

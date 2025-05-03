@@ -19,7 +19,8 @@ import { TelefonePipe } from "../../pipes/telefone.pipe";
 })
 export class ListagemMotoristasComponent implements OnInit {
 
-  motorista: IMotorista[] = [];
+  motorista!: IMotorista;
+  motoristas: IMotorista[] = [];
   motoristaService = inject(MotoristaService);
   router = inject(Router);
   dialog = inject(MatDialog);
@@ -31,8 +32,8 @@ export class ListagemMotoristasComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<IMotorista[]>;
 
   ngOnInit(): void {
-    this.motorista = this.motoristaService.getMotorista();
-    this.dataSource = [...this.motorista];
+    this.motoristas = this.motoristaService.getMotorista();
+    this.dataSource = [...this.motoristas];
   }
 
   addData() {
@@ -55,5 +56,10 @@ export class ListagemMotoristasComponent implements OnInit {
       }
     });
   }
+
+  selecionarMotorista(motorista: IMotorista) {
+      this.motorista = motorista;
+      this.router.navigate(['/formMotoristas', { motorista: JSON.stringify(motorista) }]);
+    }
 
 }

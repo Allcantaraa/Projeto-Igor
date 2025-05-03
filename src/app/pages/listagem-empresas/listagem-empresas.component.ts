@@ -19,7 +19,8 @@ import { TelefonePipe } from "../../pipes/telefone.pipe";
 })
 export class ListagemEmpresasComponent {
 
-  empresa: IEmpresa[] = [];
+  empresaSelecionada!: IEmpresa;
+  empresas: IEmpresa[] = [];
   empresaService = inject(EmpresaService);
   router = inject(Router);
   dialog = inject(MatDialog);
@@ -31,8 +32,8 @@ export class ListagemEmpresasComponent {
   @ViewChild(MatTable) table!: MatTable<IEmpresa[]>;
 
   ngOnInit(): void {
-    this.empresa = this.empresaService.getEmpresa();
-    this.dataSource = [...this.empresa];
+    this.empresas = this.empresaService.getEmpresa();
+    this.dataSource = [...this.empresas];
   }
 
   addData() {
@@ -55,4 +56,9 @@ export class ListagemEmpresasComponent {
       }
     });
   }
+
+  selecionarEmpresa(empresa: IEmpresa) {
+      this.empresaSelecionada = empresa;
+      this.router.navigate(['/formEmpresas', { empresa: JSON.stringify(empresa)}]);
+    }
 }

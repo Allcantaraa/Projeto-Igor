@@ -18,6 +18,7 @@ import { StatusViagemPipe } from "../../pipes/status-viagem.pipe";
 })
 export class ListagemViagensComponent {
 
+  viagem!: IViagem;
   viagens: IViagem[] = [];
   viagemService = inject(ViagemService);
   router = inject(Router);
@@ -32,6 +33,7 @@ export class ListagemViagensComponent {
     'motorista',
     'veiculo',
     'empresa',
+    'acoes',
   ];
   dataSource: IViagem[] = [];
 
@@ -65,5 +67,10 @@ export class ListagemViagensComponent {
       }
     });
   }
+
+  selecionarViagem(viagem: IViagem) {
+      this.viagem = viagem;
+      this.router.navigate(['/formViagens', { viagem: JSON.stringify(viagem) }]);
+    }
 
 }

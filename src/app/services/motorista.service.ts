@@ -27,4 +27,14 @@ export class MotoristaService {
     motoristas.push(novoMotorista);
     localStorage.setItem(this.storageKey, JSON.stringify(motoristas));
   }
+
+  putMotorista(motoristaEditado: IMotorista) {
+    const motoristas = this.getMotorista();
+    const index = motoristas.findIndex(m => m.cnh === motoristaEditado.cnh);
+
+    if (index !== -1) {
+      motoristas[index] = motoristaEditado;
+      localStorage.setItem(this.storageKey, JSON.stringify(motoristas));
+    }
+  }
 }

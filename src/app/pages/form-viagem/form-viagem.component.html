@@ -1,5 +1,5 @@
 <form [formGroup]="formViagem" (ngSubmit)="cadastrar()" class="form-container">
-  <h2 class="form-title">Cadastrar Viagem</h2>
+  <h2 class="form-title"> {{formViagem.value.motorista ? 'Editar Viagem' : 'Cadastrar Viagem'}}</h2>
 
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
@@ -76,7 +76,7 @@
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Motorista</mat-label>
-      <mat-select formControlName="motorista">
+      <mat-select formControlName="motorista" [compareWith]="compareMotoristas">
         <mat-option value="" disabled>Selecione um motorista</mat-option>
         <mat-option *ngFor="let mot of motorista" [value]="mot">
           {{ mot.nome }}
@@ -89,7 +89,7 @@
 
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Veiculo</mat-label>
-      <mat-select formControlName="veiculo">
+      <mat-select formControlName="veiculo" [compareWith]="compareVeiculos">
         <mat-option value="" disabled>Selecione um veiculo</mat-option>
         <mat-option *ngFor="let veic of veiculo" [value]="veic">
           {{ veic.modelo }}
@@ -104,7 +104,7 @@
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
       <mat-label>Empresa</mat-label>
-      <mat-select formControlName="empresa">
+      <mat-select formControlName="empresa" [compareWith]="compareEmpresas">
         <mat-option value="" disabled>Selecione uma empresa</mat-option>
         <mat-option *ngFor="let emp of empresa" [value]="emp">
           {{ emp.nome }}
@@ -124,7 +124,7 @@
       [disabled]="formViagem.invalid"
       class="submit-button"
     >
-      Cadastrar
+      {{ formViagem.value.motorista ? 'Salvar' : 'Cadastrar' }}
     </button>
   </div>
 </form>

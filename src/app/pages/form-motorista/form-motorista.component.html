@@ -1,5 +1,5 @@
 <form [formGroup]="form" class="form-container">
-  <h2 class="form-title">Cadastrar Motorista</h2>
+  <h2 class="form-title">{{ form.value.nome ? 'Editar Motorista' : 'Cadastrar Motorista'}}</h2>
 
   <div class="form-row">
     <mat-form-field appearance="fill" class="form-field">
@@ -72,7 +72,7 @@
       [disabled]="form.invalid"
       (click)="cadastrar()"
     >
-      Cadastrar
+      {{form.value.nome ? 'Salvar' : 'Cadastrar'}}
     </button>
   </div>
 </form>

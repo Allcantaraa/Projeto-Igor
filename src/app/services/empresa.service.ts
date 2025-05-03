@@ -25,4 +25,14 @@ export class EmpresaService {
     empresas.push(novaEmpresa);
     localStorage.setItem(this.storageKey, JSON.stringify(empresas));
   }
+
+  putEmpresa(empresaEditada: IEmpresa) {
+        const empresas = this.getEmpresa();
+        const index = empresas.findIndex(e => e.nome === empresaEditada.nome);
+    
+        if (index !== -1) {
+          empresas[index] = empresaEditada;
+          localStorage.setItem(this.storageKey, JSON.stringify(empresas));
+        }
+      }
 }

@@ -17,7 +17,8 @@ import { PlacaPipe } from "../../pipes/placa.pipe";
   styleUrl: './listagem-veiculos.component.css',
 })
 export class ListagemVeiculosComponent implements OnInit {
-  veiculo: IVeiculo[] = [];
+  veiculo!: IVeiculo;
+  veiculos: IVeiculo[] = [];
   veiculoService = inject(VeiculoService);
   router = inject(Router);
   dialog = inject(MatDialog);
@@ -35,8 +36,8 @@ export class ListagemVeiculosComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<IVeiculo[]>;
 
   ngOnInit(): void {
-    this.veiculo = this.veiculoService.getVeiculo();
-    this.dataSource = [...this.veiculo];
+    this.veiculos = this.veiculoService.getVeiculo();
+    this.dataSource = [...this.veiculos];
   }
 
   addData() {
@@ -61,5 +62,10 @@ export class ListagemVeiculosComponent implements OnInit {
         }
       }
     });
+  }
+
+  selecionarVeiculo(veiculo: IVeiculo) {
+    this.veiculo = veiculo;
+    this.router.navigate(['/formVeiculos', { veiculo: JSON.stringify(veiculo) }]);
   }
 }
